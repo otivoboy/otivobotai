@@ -1,5 +1,5 @@
 [build]
-  command = "npx nx build @deriv/core --skip-nx-cache"
+  command = "npx nx build @deriv/core --with-deps --skip-nx-cache"
   publish = "packages/core/dist"
 
 [build.environment]
