@@ -1,9 +1,10 @@
 [build]
-  command = "npm run build:prod"
+  command = "npx nx build @deriv/core --skip-nx-cache"
   publish = "packages/core/dist"
 
 [build.environment]
   NODE_VERSION = "20"
+  NODE_ENV = "staging"
 
 [[redirects]]
   from = "/*"
