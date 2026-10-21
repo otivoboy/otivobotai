@@ -5,7 +5,7 @@
         "packages/*"
     ],
     "engines": {
-        "node": "20.x"
+        "node": "24.x"
     },
     "overrides": {
         "eslint": "^8.57.1",
@@ -96,7 +96,7 @@
     "scripts": {
         "analyze:build": "nx run-many --target=analyze:build",
         "analyze:stats": "nx run-many --target=analyze:stats",
-        "build:all": "nx build @deriv/components --skip-nx-cache && nx build @deriv/account  --skip-nx-cache && nx build @deriv/bot-web-ui --skip-nx-cache && nx build @deriv/trader --skip-nx-cache && nx run-many --target=build",
+        "build:all": "nx build @deriv/components --skip-nx-cache && nx build @deriv/account  --skip-nx-cache && nx build @deriv/bot-web-ui --skip-nx-cache && nx build @deriv/trader --skip-nx-cache && nx build @deriv/shared --skip-nx-cache && nx build @deriv/translations --skip-nx-cache && nx build @deriv/cashier --skip-nx-cache && nx build @deriv/cfd --skip-nx-cache && nx build @deriv/reports --skip-nx-cache && nx build @deriv/appstore --skip-nx-cache && nx build @deriv/wallets --skip-nx-cache",
         "build:one": "f () { nx build @deriv/$1 $2 ;}; f",
         "build:since": "nx affected --target=build",
         "test:eslint-all": "nx run-many --target=test:eslint",
@@ -110,7 +110,7 @@
         "build:travis": "nx run-many --projects=@deriv/shared,@deriv/components,@deriv/translations,@deriv/cashier,@deriv/account,@deriv/cfd,@deriv/reports --target=build:travis",
         "build:prod": "export NODE_ENV=staging && npm run build:all && export NODE_ENV=",
         "build:storybook": "cd packages/components && sb build --output-dir .out",
-        "build:gh-pages": "f () { nx run-many --target=build --projects=@deriv/components && nx run-many --target=build --projects=@deriv/cashier,@deriv/account,@deriv/cfd,@deriv/reports && npm run build:local $1 ;}; f",
+        "build:gh-pages": "f () { nx run-many --target=build --projects=@deriv/components && nx run-many --target=build --projects=@deriv/cashier,@deriv/account,@deriv/cfd,@deriv/reports && npm run build:local;}; f",
         "check-imports": "node ./scripts/check-imports.js",
         "clean": "echo \"Remove $(git rev-parse --show-toplevel)/node_modules\" && lerna clean && rm -rf \"$(git rev-parse --show-toplevel)/node_modules\"",
         "deploy": "f () { export NODE_ENV=staging && npm run build:all && npm exec --workspace=@deriv/core -- npm run deploy $@ && export NODE_ENV= ;}; f",
