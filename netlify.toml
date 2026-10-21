@@ -1,6 +1,9 @@
 [build]
-  command = "npm ci && npm run build:all"
+  command = "npm ci && npx nx run @deriv/core:build"
   publish = "packages/core/dist"
+
+[build.environment]
+  NODE_OPTIONS = "--max-old-space-size=4096"
 
 [[redirects]]
   from = "/*"
