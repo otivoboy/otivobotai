@@ -50,7 +50,8 @@ export const isLocal = () => /localhost(:\d+)?$/i.test(window.location.hostname)
  */
 export const getAppId = () => {
     let app_id = null;
-    const user_app_id = ''; // you can insert Application ID of your registered application here
+    const raw_user_app_id = (process.env.DERIV_APP_ID ?? '').toString().trim();
+    const user_app_id = /^\d+$/.test(raw_user_app_id) ? raw_user_app_id : '';
     const config_app_id = window.localStorage.getItem('config.app_id');
     const current_domain = getCurrentProductionDomain() || '';
     window.localStorage.removeItem('config.platform'); // Remove config stored in localstorage if there's any.
