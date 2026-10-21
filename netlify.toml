@@ -1,5 +1,5 @@
 [build]
-  command = "npm ci && npx nx run @deriv/core:build --with-deps"
+  command = "npm ci && npx nx run @deriv/core:build --parallel=1"
   publish = "packages/core/dist"
 
 [build.environment]
