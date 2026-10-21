@@ -1,10 +1,6 @@
 [build]
-  command = "npx nx build @deriv/core --with-deps --skip-nx-cache"
+  command = "npm ci && npm run build:all"
   publish = "packages/core/dist"
-
-[build.environment]
-  NODE_VERSION = "20"
-  NODE_ENV = "staging"
 
 [[redirects]]
   from = "/*"
